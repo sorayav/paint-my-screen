@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16');
+
+body {
+  font-family: 'DotGothic16', sans-serif;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.listenBtn {
+  cursor: pointer;
+  min-width: 300px;
+  padding: 1rem;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  background: chartreuse;
+  color: black;
+  border-radius: 3px;
+  font-family: 'DotGothic16', sans-serif;
+  transition: opacity .5s;
+
+  &:hover {
+    filter: brightness(0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
+  }
+  &:focus {
+    transform: translatey(1px);
+  }
+}
+
+.hide {
+  visibility: hidden;
+  height: 0px;
+  opacity: 0;
+}
