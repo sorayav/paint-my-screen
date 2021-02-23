@@ -13,8 +13,23 @@ listen.addEventListener('click', () => {
   console.log('Listening...')
 });
 
+function isColor(strColor){
+  const s = new Option().style;
+  s.color = strColor;
+  return s.color == strColor;
+}
+
 recognition.addEventListener('result', (e) => {
-  console.log(e.results[0][0].transcript);
   let color = e.results[0][0].transcript;
   document.body.style.background = color;
-})
+  if (isColor(color)) {
+    output.innerHTML = color;
+  } else {
+    output.innerHTML = `Sorry, I didn't understand that color.`
+  }
+  
+});
+
+recognition.addEventListener('nomatch', () => output.innerHTML = `Sorry, I didn't understand that color.`);
+recognition.addEventListener('speechend', () => recognition.stop());
+recognition.addEventListener('error', (e) => { output.innerHTML = `Speech recognition error detected: ${e.error}`});
