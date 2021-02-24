@@ -3,6 +3,7 @@ const recognition = new SpeechRecognition();
 
 const output = document.querySelector('output');
 const listen = document.querySelector('.listenBtn');
+const body = document.body.style;
 
 recognition.lang = 'en-US';
 recognition.continuous = false;
@@ -10,29 +11,27 @@ recognition.interimResults = false;
 recognition.maxAlternatives = 1;
 
 listen.addEventListener('click', () => {
-  output.innerHTML = '';
   recognition.start();
-  console.log('Listening...')
+  output.innerHTML = 'Listening...';
 });
 
 function isColor(strColor){
   const s = new Option().style;
   s.color = strColor;
-  console.log(s, s.color)
   return s.color == strColor;
 }
 
 recognition.addEventListener('result', (e) => {
   let color = e.results[0][0].transcript.toLocaleLowerCase();
-  document.body.style.background = color;
+  body.background = color;
   output.innerHTML = `I heard: ${color}`;
   if (isColor(color)) {
-    console.log(color)
     output.innerHTML = `I heard: ${color}`;
   } else {
     output.innerHTML = `Sorry, I didn't understand that color.`
-    console.log(color)
   }
+  color == "black" ? body.color = 'white' : body.color = 'black';
+
 });
 
 recognition.addEventListener('nomatch', () => output.innerHTML = `Sorry, I didn't understand that color.`);
