@@ -39,6 +39,17 @@ body {
   }
 }
 
+.footer {
+  position: absolute;
+  bottom: .5rem;
+  font-size: .875rem;
+  color: #9e9e9e;
+   
+  a {
+    color: #9e9e9e;
+  }
+}
+
 .hide {
   visibility: hidden;
   height: 0px;
