@@ -31,11 +31,13 @@ recognition.addEventListener('result', (e) => {
     output.innerHTML = `Sorry, I didn't understand that color.`
   }
   color == "black" ? body.color = 'white' : body.color = 'black';
-
 });
 
 recognition.addEventListener('nomatch', () => output.innerHTML = `Sorry, I didn't understand that color.`);
-recognition.addEventListener('speechend', () => recognition.stop());
+recognition.addEventListener('speechend', () => {
+  output.innerHTML = '';
+  recognition.stop()
+});
 recognition.addEventListener('error', (e) => { output.innerHTML = `Speech recognition error detected: ${e.error}`});
 
 //
